@@ -1,0 +1,29 @@
+@mixin font($font_name, $file_name, $weight, $style) {
+
+   @font-face {
+      font-family: $font_name;
+      font-display: swap;
+      src: url("../fonts/#{$file_name}.woff") format("woff"),
+      url("../fonts/#{$file_name}.woff2") format("woff2");
+      font-weight: #{$weight};
+      font-style: #{$style};
+   }
+}
+
+@import "fonts";
+@import "icons";
+
+$fontFamily: "gilroy";
+$fontSize: 16px;
+
+[class^="_icon-"]::before,
+[class*=" _icon-"]::before {
+   /* use !important to prevent issues with browser extensions that change fonts */
+   font-family: 'icons' !important;
+   display: block;
+}
+
+.main {
+   font-size: $fontSize;
+   font-family: $fontFamily;
+}
